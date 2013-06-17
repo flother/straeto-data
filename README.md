@@ -6,7 +6,7 @@ This repository contains data files for (hopefully) all publicly available and u
 
 - [List of all stops](https://github.com/gudmundur/straeto-data/blob/master/stops/allStops.csv).
 - Stops in order per direction, for all routes available in the [real-time feed][realtimefeed].
-- [Rough route paths](https://github.com/gudmundur/straeto-data/blob/master/routes/routes.json).
+- [Rough route paths](https://github.com/gudmundur/straeto-data/blob/master/routes/route_paths.geojson).
 - Timetables.
 
 ## Route stops
