@@ -18,7 +18,7 @@ glob 'schedules/**.csv', (err, files) ->
 
 stops.importDefault (err, stops) ->
     data = JSON.stringify stops
-    fs.writeFileSync 'stops/allStops.json', data
+    fs.writeFileSync 'stops/allStops.geojson', data
 
 routes.importDefault (err, routes) ->
     readStops = (file, callback) ->

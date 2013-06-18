@@ -2,7 +2,9 @@ fs = require 'fs'
 csv = require 'csv'
 
 parseCsv = (csv, callback) ->
-    stops = []
+    stops =
+      type: "FeatureCollection"
+      features: []
 
     csv
         .on('record', (row, index) ->
@@ -10,12 +12,19 @@ parseCsv = (csv, callback) ->
 
 
             [stopId, longName, shortName, latitude, longitude] = row
-            stops.push
-                stopId: stopId
-                longName: longName
-                shortName: shortName
-                latitude: (Number latitude)
-                longitude: (Number longitude)
+            stops.features.push {
+                type: "Feature"
+                properties:
+                    stopId: stopId
+                    longName: longName
+                    shortName: shortName
+                geometry:
+                    type: "Point"
+                    coordinates: [
+                        (Number longitude)
+                        (Number latitude)
+                    ]
+            }
         )
         .on('error', (err) -> callback err)
         .on('end', (count) -> callback null, stops)

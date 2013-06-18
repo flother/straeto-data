@@ -6,13 +6,20 @@ describe 'Stop Importer', ->
         stops.importDefault (err, stops) ->
             expect(stops).to.be.an.object
 
-            stop = (_ stops).find (s) -> s.stopId is '90000270'
+            stop = (_ stops.features).find (s) -> s.properties.stopId is '90000270'
 
-            expect(stop).to.deep.equal
-                stopId: '90000270'
-                longName: 'Menntaskólinn við Hamrahlíð / MH'
-                shortName: 'MH'
-                latitude: 64.131307999805
-                longitude: -21.9072679997438
+            expect(stop).to.deep.equal {
+                type: "Feature"
+                properties:
+                    stopId: '90000270'
+                    longName: 'Menntaskólinn við Hamrahlíð / MH'
+                    shortName: 'MH'
+                geometry:
+                    type: "Point"
+                    coordinates: [
+                        -21.9072679997438
+                        64.131307999805
+                    ]
+            }
 
             done()
